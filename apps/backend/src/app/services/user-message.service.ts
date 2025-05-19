@@ -17,4 +17,12 @@ export class UserMessageService {
     const message = this.userMessageRepository.create(createUserMessageDto);
     return this.userMessageRepository.save(message);
   }
+
+  async findAll(): Promise<UserMessage[]> {
+    return this.userMessageRepository.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
 }
