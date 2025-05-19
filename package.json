@@ -6,7 +6,8 @@
     "typeorm": "ts-node -P apps/backend/tsconfig.migrations.json ./node_modules/typeorm/cli",
     "migration:generate": "npm run typeorm -- migration:generate -d apps/backend/src/config/typeorm.config.ts",
     "migration:run": "npm run typeorm -- migration:run -d apps/backend/src/config/typeorm.config.ts",
-    "migration:revert": "npm run typeorm -- migration:revert -d apps/backend/src/config/typeorm.config.ts"
+    "migration:revert": "npm run typeorm -- migration:revert -d apps/backend/src/config/typeorm.config.ts",
+    "seed:messages": "ts-node -P apps/backend/tsconfig.app.json apps/backend/src/seeds/seed-messages.ts"
   },
   "private": true,
   "devDependencies": {
