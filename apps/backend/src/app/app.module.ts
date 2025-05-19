@@ -2,6 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserMessage } from './models/user-message.entity';
+import { UserMessageService } from './services/user-message.service';
+import { UserMessageController } from './controllers/user-message.controller';
 
 @Module({
   imports: [
@@ -12,11 +15,12 @@ import { AppService } from './app.service';
       username: process.env.APP_DB_USER || 'app',
       password: process.env.APP_DB_PASS || 'app',
       database: process.env.APP_DB_NAME || 'app',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [UserMessage],
       synchronize: false,
     }),
+    TypeOrmModule.forFeature([UserMessage]),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, UserMessageController],
+  providers: [AppService, UserMessageService],
 })
 export class AppModule {}
